@@ -1,0 +1,24 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Jelenleg ez az elérési útvonal a config.json fájlban: @ViewData["JLCPath"]</h1>
+    <p>Ha ezen változtatni szeretnél, kérlek módosítsd a config.json fájlban. </p>
+    
+
+
+</div>
+
+<div>
+    <h1>Kérlek töltsd fel a BOM.csv fájlt ide:</h1>
+    <form asp-controller="Home" asp-action="UploadBOM"
+          enctype="multipart/form-data" method="post">
+        <input type="file" name="file" />
+        <input id="multiplyquantity" type="number" name="multiplyquantity" value="1">
+        <label for="multiplyquantity">:A rendelni kívánt NYÁK-ök száma</label>
+        <button type="submit">Feltöltés</button>
+    </form>
+</div>
+
+

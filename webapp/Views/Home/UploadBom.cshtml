@@ -1,0 +1,126 @@
+﻿
+@using webapp.Models;
+@model dynamic
+@{
+    ViewData["Title"] = "UploadBOM";
+}
+
+<h1>A keresett Táblázat:</h1>
+
+<p>
+    <a asp-action="CreateNewCompare">Új Bom Fájl Betöltése</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Stock
+            </th>
+
+            <th>
+                Max PCB
+            </th>
+            <th>
+                ID
+            </th>
+            <th>
+                Name
+            </th>
+            <th>
+                Footprint
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Manufacturer Part
+            </th>
+            <th>
+                Manufacturer
+            </th>
+            <th>
+                Supplier
+            </th>
+            <th>
+                Supplier Part
+            </th>
+
+
+            <th>
+                Price
+            </th>
+
+            <th>
+                Designator
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (ModelToPrint item in Model.modelToPrint)
+        {
+
+            <tr class="@(item.MaxPCB < item.Quantity ? "red" : "white")">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Stock)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaxPCB)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Footprint)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Quantity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ManufacturerPart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Manufacturer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Supplier)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SupplierPart)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Designator)
+                </td>
+
+            </tr>
+
+        }
+
+    </tbody>
+
+</table>
+<style>
+    .red {
+        background-color: red;
+    }
+
+    .white {
+        background-color: white;
+    }
+</style>
+
+<a>
+    A Legkisebb MAX PCB szám:
+    @foreach (MinFromModel item in Model.minFromModel)
+    {
+        @Html.DisplayFor(modelItem => item.min)
+    }
+
+</a>
+
